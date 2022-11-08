@@ -45,5 +45,7 @@ public enum GameStates
     start,
     inGame,
     pause,
-    gameOver
+    gameOver,
+    onePlayer,
+    twoPlayer
 }
