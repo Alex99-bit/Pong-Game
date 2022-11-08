@@ -16,8 +16,10 @@ public class Player2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.sharedInstance.currentGameState == GameStates.onePlayer)
+        if(GameManager.sharedInstance.currentGameState == GameStates.onePlayer &&
+            GameManager.sharedInstance.currentGameState == GameStates.inGame)
         {
+            // Solo se ejecuta si se selecciono el modo de un jugador y se esta jugando
             this.transform.position = new Vector2(transform.position.x, posPelota.position.y);
         }
     }
