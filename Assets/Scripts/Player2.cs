@@ -21,6 +21,16 @@ public class Player2 : MonoBehaviour
         {
             // Solo se ejecuta si se selecciono el modo de un jugador y se esta jugando
             this.transform.position = new Vector2(transform.position.x, posPelota.position.y);
+
+        }
+        else
+        {
+            if(GameManager.sharedInstance.currentGameState == GameStates.twoPlayer &&
+                GameManager.sharedInstance.currentGameState == GameStates.inGame)
+            {
+                // Se ejecuta en caso de que sean dos jugadores
+
+            }
         }
     }
 }
