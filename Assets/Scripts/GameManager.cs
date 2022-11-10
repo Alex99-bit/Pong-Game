@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
         {
             sharedInstance = this;
         }
-        scoreP1.text = "0";
-        scoreP2.text = "0";
+        scoreP1.text = "Player 1 : 0";
+        scoreP2.text = "Player 2 : 0";
     }
 
     // Update is called once per frame

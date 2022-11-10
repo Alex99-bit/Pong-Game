@@ -2026,24 +2026,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5924761840970897586, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 5924761840970897586, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5924761840970897587, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
+      propertyPath: scoreP1
+      value: 
+      objectReference: {fileID: 38479953}
+    - target: {fileID: 5924761840970897587, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
+      propertyPath: scoreP2
+      value: 
+      objectReference: {fileID: 398773613}
     - target: {fileID: 5924761840970897588, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5924761840970897588, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.9163713
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5924761840970897588, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5949152
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5924761840970897588, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.030226037
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5924761840970897588, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
       propertyPath: m_LocalRotation.w
