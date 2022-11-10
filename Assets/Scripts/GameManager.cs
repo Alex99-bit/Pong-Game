@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
     static public GameManager sharedInstance;
     public GameStates currentGameState;
     [SerializeField]TextMeshProUGUI scoreP1, scoreP2;// Textos para mostrar el score
-    [SerializeField]int scorePlayer1, scorePlayer2; // Score para contabilizar
+    public static int scorePlayer1, scorePlayer2; // Score para contabilizar
+    /* El score es estatico para poder administrarlo en otros scripts y que siempre mantenga su valor,
+        al tener una instancia compartida, es más facil acceder a este dato */
 
     private void Awake()
     {
@@ -39,6 +41,12 @@ public class GameManager : MonoBehaviour
             // Entonces se debería quitar la pausa
             SetNewGameState(GameStates.inGame);
         }
+
+        if(currentGameState == GameStates.inGame)
+        {
+            scoreP1.text = "Player 1 : " + scorePlayer1;
+            scoreP2.text = "Player 2 : " + scorePlayer2;
+        }
     }
 
     // Quaternion.identity investigar que onda xd
@@ -51,16 +59,24 @@ public class GameManager : MonoBehaviour
         {
             case GameStates.start:
                 Time.timeScale = 0;
+                scorePlayer1 = 0;
+                scorePlayer2 = 0;
                 break;
+
             case GameStates.pause:
                 Time.timeScale = 0;
                 break;
+
             case GameStates.inGame:
                 Time.timeScale = 1;
                 break;
+
             case GameStates.gameOver:
                 Time.timeScale = 0;
+                scorePlayer1 = 0;
+                scorePlayer2 = 0;
                 break;
+
             default:
                 Debug.Log("Error: Si ves este texto entonces valio m****s");
                 break;
