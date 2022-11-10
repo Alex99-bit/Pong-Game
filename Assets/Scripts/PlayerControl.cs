@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     Rigidbody2D rigidPlayer;
+    float speed;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidPlayer = this.GetComponent<Rigidbody2D>();
+        speed = 0;
     }
 
     // Update is called once per frame
@@ -26,7 +28,13 @@ public class PlayerControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-
+            speed++;
         }
+        else if(Input.GetKeyDown(KeyCode.S))
+        {
+            speed--;
+        }
+
+        rigidPlayer.velocity = new Vector2(0, speed);
     }
 }
