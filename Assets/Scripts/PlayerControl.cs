@@ -59,17 +59,22 @@ public class PlayerControl : MonoBehaviour
     void Limitless()
     {
         // Calcula si topa con un limite o nel
-        if (playerTransform.position.y >= 3.77f)
+        if (playerTransform.position.y >= 3.7f)
         {
             limiteSup = true;
         }
         else
         {
             limiteSup = false;
-            if(playerTransform.position.y <= -5.04f)
-            {
+        }
 
-            }
+        if (playerTransform.position.y <= -5.0f)
+        {
+            limiteInf = true;
+        }
+        else
+        {
+            limiteInf = false;
         }
     }
 }
