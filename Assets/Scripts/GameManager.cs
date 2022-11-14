@@ -12,13 +12,15 @@ public class GameManager : MonoBehaviour
     public static int scorePlayer1, scorePlayer2; // Score para contabilizar
     /* El score es estatico para poder administrarlo en otros scripts y que siempre mantenga su valor,
         al tener una instancia compartida, es más facil acceder a este dato */
+    public static bool start;
 
     private void Awake()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 0;
         currentGameType = GameType.none;
         scorePlayer1 = 0;
         scorePlayer2 = 0;
+        start = false;
     }
 
     // Start is called before the first frame update
@@ -51,6 +53,20 @@ public class GameManager : MonoBehaviour
             scoreP1.text = "Player 1 : " + scorePlayer1;
             scoreP2.text = "Player 2 : " + scorePlayer2;
         }
+    }
+
+    public void StartGameOne()
+    {
+        SetNewGameState(GameStates.inGame);
+        currentGameType = GameType.onePlayer;
+        start = true;
+    }
+
+    public void StartGameTwo()
+    {
+        SetNewGameState(GameStates.inGame);
+        currentGameType = GameType.twoPlayer;
+        start = true;
     }
 
     // Quaternion.identity investigar que onda xd

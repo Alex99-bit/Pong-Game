@@ -20,29 +20,39 @@ public class SpawnBall : MonoBehaviour
     {
         ballTransform = this.GetComponent<Transform>();
         ballRigid = this.GetComponent<Rigidbody2D>();
+        ballTransform = spawn1;
     }
 
     private void FixedUpdate()
     {
         if(GameManager.sharedInstance.currentGameState == GameStates.inGame)
         {
+            if (GameManager.start)
+            {
+                // Este codigo se ejecuta unicamente en cuanto comienza el juego
+                GameManager.start = false;
+                ballRigid.AddForce(Vector2.left * force, ForceMode2D.Impulse);
+            }
+
             switch (gol)
             {
                 case 1:
                     gol = 0;
                     // El jugador 1 recibio un gol, por ende se le añade una fuerza a la pelota en su direccion
-                    ballRigid.AddForce(transform.up * force, ForceMode2D.Impulse);
+                    ballRigid.AddForce(Vector2.left * force, ForceMode2D.Impulse);
                     break;
                 case 2:
                     gol = 0;
                     // El jugador 2 recibio un gol, por ende se le añade una fuerza a la pelota en su direccion
-
+                    ballRigid.AddForce(Vector2.right * force, ForceMode2D.Impulse);
                     break;
                 default:
                     // Si no pasa nada de eso, el gol se mantiene en 0
                     gol = 0;
                     break;
             }
+
+
         }
     }
 
