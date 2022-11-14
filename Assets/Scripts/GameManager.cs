@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameStates currentGameState;
     public GameType currentGameType;
     [SerializeField]TextMeshProUGUI scoreP1, scoreP2;// Textos para mostrar el score
-    public static int scorePlayer1, scorePlayer2; // Score para contabilizar
+    public int scorePlayer1, scorePlayer2; // Score para contabilizar
     /* El score es estatico para poder administrarlo en otros scripts y que siempre mantenga su valor,
         al tener una instancia compartida, es más facil acceder a este dato */
     public static bool start;
@@ -55,11 +55,14 @@ public class GameManager : MonoBehaviour
             scoreP1.text = "Player 1 : " + scorePlayer1;
             scoreP2.text = "Player 2 : " + scorePlayer2;
             timer += Time.deltaTime;
-            if (timer >= 4.5f)
+            /*if (timer >= 3.6f)
             {
-                // Pasaron 7 seg, se reinicia la partida
-                SpawnBall.sharedInstance.transform.position = SpawnBall.sharedInstance.spawn1.position;
-            }
+                // Pasaron n seg, se reinicia la partida
+                timer = 0;
+                SpawnBall.sharedInstance.ballTransform = SpawnBall.sharedInstance.spawn1;
+                SpawnBall.sharedInstance.ballRigid.velocity = Vector2.zero;
+                SpawnBall.sharedInstance.ballRigid.AddForce(Vector2.left * SpawnBall.sharedInstance.force, ForceMode2D.Impulse);
+            }*/
 
             if(scorePlayer1 >= 7)
             {

@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class SpawnBall : MonoBehaviour
 {
-    public Transform spawn1, spawn2;
     public static SpawnBall sharedInstance;
-    Rigidbody2D ballRigid;
+    public Transform spawn1, spawn2, ballTransform;
+    public Rigidbody2D ballRigid;
     int gol;
-    [SerializeField] float force;
+    public float force,delay;
 
     private void Awake()
     {
-        if(sharedInstance == null)
+        if (sharedInstance == null)
         {
             sharedInstance = this;
         }
         spawn1 = GameObject.Find("SpawnBall1").GetComponent<Transform>();
         spawn2 = GameObject.Find("SpawnBall2").GetComponent<Transform>();
+        ballTransform = GetComponent<Transform>();
+        delay = 0;
     }
 
     // Start is called before the first frame update
@@ -26,6 +28,11 @@ public class SpawnBall : MonoBehaviour
         //ballTransform = this.GetComponent<Transform>();
         ballRigid = this.GetComponent<Rigidbody2D>();
         //ballTransform = spawn1;
+    }
+
+    private void Update()
+    {
+        delay += Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -37,30 +44,70 @@ public class SpawnBall : MonoBehaviour
                 // Este codigo se ejecuta unicamente en cuanto comienza el juego
                 GameManager.start = false;
                 this.transform.position = spawn1.position;
-                ballRigid.AddForce(Vector2.left * force, ForceMode2D.Impulse);
+                if (delay >= 1.5f)
+                {
+                    delay = 0;
+                    ballRigid.AddForce(Vector2.left * force, ForceMode2D.Impulse);
+                }
             }
 
-            switch (gol)
+            if (delay >= 1.5f && gol != 0)
             {
-                case 1:
-                    gol = 0;
-                    // El jugador 1 recibio un gol, por ende se le añade una fuerza a la pelota en su direccion
-                    ballRigid.AddForce(Vector2.left * force, ForceMode2D.Impulse);
-                    break;
-                case 2:
-                    gol = 0;
-                    // El jugador 2 recibio un gol, por ende se le añade una fuerza a la pelota en su direccion
-                    ballRigid.AddForce(Vector2.right * force, ForceMode2D.Impulse);
-                    break;
-                default:
-                    // Si no pasa nada de eso, el gol se mantiene en 0
-                    gol = 0;
-                    break;
+                delay = 0;
+                switch (gol)
+                {
+                    case 1:
+                        gol = 0;
+                        // El jugador 1 recibio un gol, por ende se le añade una fuerza a la pelota en su direccion
+                        ballRigid.velocity = Vector2.zero;
+                        ballRigid.AddForce(Vector2.left * force, ForceMode2D.Impulse);
+                        break;
+                    case 2:
+                        gol = 0;
+                        // El jugador 2 recibio un gol, por ende se le añade una fuerza a la pelota en su direccion
+                        ballRigid.velocity = Vector2.zero;
+                        ballRigid.AddForce(Vector2.right * force, ForceMode2D.Impulse);
+                        break;
+                    default:
+                        // Si no pasa nada de eso, el gol se mantiene en 0
+                        gol = 0;
+                        break;
+                }
             }
 
 
         }
     }
+
+    // Creo que al final no sirvio
+    /*public void Saque(int lado)
+    {
+        ballRigid.velocity = new Vector2(0,0);
+
+        delay += Time.deltaTime;
+
+        if (delay >= 1.5f)
+        {
+            // 1 a la izq, 2 a la der
+            switch (lado)
+            {
+                case 1:
+                    //this.transform.position = spawn1.position;
+                    transform.position.Set(spawn1.position.x, spawn1.position.y, spawn1.position.z);
+                    ballRigid.AddForce(Vector2.left * force, ForceMode2D.Impulse);
+                    break;
+                case 2:
+                    //this.transform.position = spawn2.position;
+                    transform.position.Set(spawn2.position.x, spawn2.position.y, spawn2.position.z);
+                    ballRigid.AddForce(Vector2.right * force, ForceMode2D.Impulse);
+                    break;
+                default:
+                    Debug.Log("Ese lado no existe aquí mi rey");
+                    break;
+            }
+            delay = 0;
+        }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -70,24 +117,30 @@ public class SpawnBall : MonoBehaviour
             if (collision.gameObject.CompareTag("Wall1"))
             {
                 // Gol para player 2
-                GameManager.scorePlayer2++;
+                GameManager.sharedInstance.scorePlayer2++;
                 gol = 1;
+                this.transform.position = spawn1.position;
                 // Saca el jugador 1, por ende se spawnea de su lado
                 //ballTransform = spawn1;
-                this.transform.position = spawn1.position;
-                GameManager.sharedInstance.timer = 0;
             }
 
             if (collision.gameObject.CompareTag("Wall2"))
             {
                 // Gol para player 1
-                GameManager.scorePlayer1++;
+                GameManager.sharedInstance.scorePlayer1++;
                 gol = 2;
+                this.transform.position = spawn2.position;
                 // Saca el jugador 2, por ende se spawnea de su lado
                 //ballTransform = spawn2;
-                this.transform.position = spawn2.position;
-                GameManager.sharedInstance.timer = 0;
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.CompareTag("Player1") || collision.collider.CompareTag("Player2"))
+        {
+            GameManager.sharedInstance.timer = 0;
         }
     }
 }

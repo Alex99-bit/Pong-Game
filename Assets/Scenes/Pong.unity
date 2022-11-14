@@ -1270,7 +1270,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn1: {fileID: 0}
   spawn2: {fileID: 0}
+  ballTransform: {fileID: 0}
+  ballRigid: {fileID: 0}
   force: 15
+  delay: 0
 --- !u!1 &805161401
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,6 +2325,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7381205790605908332, guid: 649b33d732262b14f82c83f706c5e761, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3501011972537238313, guid: 649b33d732262b14f82c83f706c5e761, type: 3}
       propertyPath: m_RootOrder
       value: 1
