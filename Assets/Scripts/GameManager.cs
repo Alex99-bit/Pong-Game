@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         currentGameType = GameType.none;
+        scorePlayer1 = 0;
+        scorePlayer2 = 0;
     }
 
     // Start is called before the first frame update
