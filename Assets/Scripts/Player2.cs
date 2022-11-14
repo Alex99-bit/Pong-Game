@@ -16,7 +16,7 @@ public class Player2 : MonoBehaviour
     {
         // Se busca el objeto ball y se extrae la posicion
         posPelota = GameObject.FindWithTag("Ball").GetComponent<Transform>();
-        playerRb = GetComponent<Rigidbody2D>();
+        playerRb = this.GetComponent<Rigidbody2D>();
         moveY = 0;
     }
 
