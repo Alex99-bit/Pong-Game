@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn1: {fileID: 0}
   spawn2: {fileID: 0}
-  force: 5
+  force: 15
 --- !u!1 &805161401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,7 +1723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8622152061121727580, guid: 0a65c097730b05d4286cd47dbf0c5e68, type: 3}
       propertyPath: m_Constraints
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a65c097730b05d4286cd47dbf0c5e68, type: 3}
@@ -1732,7 +1732,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5870038351038927323, guid: 0a65c097730b05d4286cd47dbf0c5e68, type: 3}
   m_PrefabInstance: {fileID: 1368799281}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1368799283
+--- !u!114 &1368799288
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

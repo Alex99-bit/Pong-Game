@@ -9,7 +9,7 @@ public class Player2 : MonoBehaviour
     Rigidbody2D playerRb;
     float moveY;
     bool limiteSup, limiteInf;
-    public float speed;
+    [SerializeField] float speed;
 
     // Start is called before the first frame update
     void Start()

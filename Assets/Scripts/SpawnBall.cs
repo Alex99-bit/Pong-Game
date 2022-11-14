@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class SpawnBall : MonoBehaviour
 {
-    [SerializeField] Transform spawn1, spawn2;
+    public Transform spawn1, spawn2;
+    public static SpawnBall sharedInstance;
     Rigidbody2D ballRigid;
     int gol;
     [SerializeField] float force;
 
     private void Awake()
     {
+        if(sharedInstance == null)
+        {
+            sharedInstance = this;
+        }
         spawn1 = GameObject.Find("SpawnBall1").GetComponent<Transform>();
         spawn2 = GameObject.Find("SpawnBall2").GetComponent<Transform>();
     }
@@ -70,6 +75,7 @@ public class SpawnBall : MonoBehaviour
                 // Saca el jugador 1, por ende se spawnea de su lado
                 //ballTransform = spawn1;
                 this.transform.position = spawn1.position;
+                GameManager.sharedInstance.timer = 0;
             }
 
             if (collision.gameObject.CompareTag("Wall2"))
@@ -80,6 +86,7 @@ public class SpawnBall : MonoBehaviour
                 // Saca el jugador 2, por ende se spawnea de su lado
                 //ballTransform = spawn2;
                 this.transform.position = spawn2.position;
+                GameManager.sharedInstance.timer = 0;
             }
         }
     }

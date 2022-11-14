@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
         al tener una instancia compartida, es más facil acceder a este dato */
     public static bool start;
     public GameObject panelStart, panelPause, panelGameOver;
+    public float timer;
 
     private void Awake()
     {
@@ -53,6 +54,22 @@ public class GameManager : MonoBehaviour
         {
             scoreP1.text = "Player 1 : " + scorePlayer1;
             scoreP2.text = "Player 2 : " + scorePlayer2;
+            timer += Time.deltaTime;
+            if (timer >= 4.5f)
+            {
+                // Pasaron 7 seg, se reinicia la partida
+                SpawnBall.sharedInstance.transform.position = SpawnBall.sharedInstance.spawn1.position;
+            }
+
+            if(scorePlayer1 >= 7)
+            {
+                // Player 1 gana
+            }
+            
+            if(scorePlayer2 >= 7)
+            {
+                // Player 2 gana
+            }
         }
     }
 
