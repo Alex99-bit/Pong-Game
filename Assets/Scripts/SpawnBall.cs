@@ -7,6 +7,7 @@ public class SpawnBall : MonoBehaviour
     [SerializeField] Transform ballTransform, spawn1, spawn2;
     Rigidbody2D ballRigid;
     int gol;
+    [SerializeField] float force;
 
     private void Awake()
     {
@@ -30,7 +31,7 @@ public class SpawnBall : MonoBehaviour
                 case 1:
                     gol = 0;
                     // El jugador 1 recibio un gol, por ende se le añade una fuerza a la pelota en su direccion
-
+                    ballRigid.AddForce(transform.up * force, ForceMode2D.Impulse);
                     break;
                 case 2:
                     gol = 0;
