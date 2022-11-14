@@ -16,7 +16,7 @@ public class Player2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.sharedInstance.currentGameState == GameStates.onePlayer &&
+        if(GameManager.sharedInstance.currentGameType == GameType.onePlayer &&
             GameManager.sharedInstance.currentGameState == GameStates.inGame)
         {
             // Solo se ejecuta si se selecciono el modo de un jugador y se esta jugando
@@ -25,7 +25,7 @@ public class Player2 : MonoBehaviour
         }
         else
         {
-            if(GameManager.sharedInstance.currentGameState == GameStates.twoPlayer &&
+            if(GameManager.sharedInstance.currentGameType == GameType.twoPlayer &&
                 GameManager.sharedInstance.currentGameState == GameStates.inGame)
             {
                 // Se ejecuta en caso de que sean dos jugadores

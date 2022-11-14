@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     static public GameManager sharedInstance;
     public GameStates currentGameState;
+    public GameType currentGameType;
     [SerializeField]TextMeshProUGUI scoreP1, scoreP2;// Textos para mostrar el score
     public static int scorePlayer1, scorePlayer2; // Score para contabilizar
     /* El score es estatico para poder administrarlo en otros scripts y que siempre mantenga su valor,
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 1;
+        currentGameType = GameType.none;
     }
 
     // Start is called before the first frame update
@@ -91,7 +93,12 @@ public enum GameStates
     start,
     inGame,
     pause,
-    gameOver,
+    gameOver
+}
+
+public enum GameType
+{
     onePlayer,
-    twoPlayer
+    twoPlayer,
+    none
 }
