@@ -21,7 +21,6 @@ public class SpawnBall : MonoBehaviour
         //ballTransform = this.GetComponent<Transform>();
         ballRigid = this.GetComponent<Rigidbody2D>();
         //ballTransform = spawn1;
-        this.transform.position = spawn1.position;
     }
 
     private void FixedUpdate()
@@ -32,6 +31,7 @@ public class SpawnBall : MonoBehaviour
             {
                 // Este codigo se ejecuta unicamente en cuanto comienza el juego
                 GameManager.start = false;
+                this.transform.position = spawn1.position;
                 ballRigid.AddForce(Vector2.left * force, ForceMode2D.Impulse);
             }
 

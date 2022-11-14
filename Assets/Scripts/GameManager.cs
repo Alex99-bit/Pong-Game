@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     /* El score es estatico para poder administrarlo en otros scripts y que siempre mantenga su valor,
         al tener una instancia compartida, es más facil acceder a este dato */
     public static bool start;
+    public GameObject panelStart, panelPause, panelGameOver;
 
     private void Awake()
     {
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
         SetNewGameState(GameStates.inGame);
         currentGameType = GameType.onePlayer;
         start = true;
+        panelStart.active = false;
     }
 
     public void StartGameTwo()
@@ -67,6 +69,7 @@ public class GameManager : MonoBehaviour
         SetNewGameState(GameStates.inGame);
         currentGameType = GameType.twoPlayer;
         start = true;
+        panelStart.active = false;
     }
 
     // Quaternion.identity investigar que onda xd

@@ -484,7 +484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &151621598
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1193,7 +1193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 510768097}
   m_Layer: 0
-  m_Name: SpaenBall2
+  m_Name: SpawnBall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1268,7 +1268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98cb879cc2b08ad4594d53b1947d4a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballTransform: {fileID: 0}
   spawn1: {fileID: 0}
   spawn2: {fileID: 0}
   force: 5
@@ -1740,11 +1739,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368799282}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9121ceaca614e10488aca1afe90772a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
 --- !u!1 &1403862561
 GameObject:
   m_ObjectHideFlags: 0
@@ -3013,8 +3013,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 398773613}
     - target: {fileID: 5924761840970897587, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
+      propertyPath: panelPause
+      value: 
+      objectReference: {fileID: 151621597}
+    - target: {fileID: 5924761840970897587, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
+      propertyPath: panelStart
+      value: 
+      objectReference: {fileID: 2110800830}
+    - target: {fileID: 5924761840970897587, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
+      propertyPath: panelGameOver
+      value: 
+      objectReference: {fileID: 646061681}
+    - target: {fileID: 5924761840970897587, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
+      propertyPath: currentGameType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924761840970897587, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
       propertyPath: currentGameState
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5924761840970897588, guid: 3d34fc5038eb99640a11a4fbf22f225d, type: 3}
       propertyPath: m_RootOrder
