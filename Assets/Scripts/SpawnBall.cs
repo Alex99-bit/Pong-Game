@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnBall : MonoBehaviour
 {
-    [SerializeField] Transform ballTransform, spawn1, spawn2;
+    [SerializeField] Transform spawn1, spawn2;
     Rigidbody2D ballRigid;
     int gol;
     [SerializeField] float force;
@@ -18,9 +18,10 @@ public class SpawnBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ballTransform = this.GetComponent<Transform>();
+        //ballTransform = this.GetComponent<Transform>();
         ballRigid = this.GetComponent<Rigidbody2D>();
-        ballTransform = spawn1;
+        //ballTransform = spawn1;
+        this.transform.position = spawn1.position;
     }
 
     private void FixedUpdate()
@@ -67,7 +68,8 @@ public class SpawnBall : MonoBehaviour
                 GameManager.scorePlayer2++;
                 gol = 1;
                 // Saca el jugador 1, por ende se spawnea de su lado
-                ballTransform = spawn1;
+                //ballTransform = spawn1;
+                this.transform.position = spawn1.position;
             }
 
             if (collision.gameObject.CompareTag("Wall2"))
@@ -76,7 +78,8 @@ public class SpawnBall : MonoBehaviour
                 GameManager.scorePlayer1++;
                 gol = 2;
                 // Saca el jugador 2, por ende se spawnea de su lado
-                ballTransform = spawn2;
+                //ballTransform = spawn2;
+                this.transform.position = spawn2.position;
             }
         }
     }
