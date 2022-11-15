@@ -43,11 +43,13 @@ public class SpawnBall : MonoBehaviour
             {
                 // Este codigo se ejecuta unicamente en cuanto comienza el juego
                 GameManager.start = false;
+                print("start activado");
                 this.transform.position = spawn1.position;
                 if (delay >= 1.5f)
                 {
                     delay = 0;
                     ballRigid.AddForce(Vector2.left * force, ForceMode2D.Impulse);
+                    print("Activado despues del delay");
                 }
             }
 

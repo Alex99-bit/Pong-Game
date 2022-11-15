@@ -55,14 +55,14 @@ public class GameManager : MonoBehaviour
             scoreP1.text = "Player 1 : " + scorePlayer1;
             scoreP2.text = "Player 2 : " + scorePlayer2;
             timer += Time.deltaTime;
-            /*if (timer >= 3.6f)
+            if (timer >= 3.6f)
             {
                 // Pasaron n seg, se reinicia la partida
                 timer = 0;
                 SpawnBall.sharedInstance.ballTransform = SpawnBall.sharedInstance.spawn1;
                 SpawnBall.sharedInstance.ballRigid.velocity = Vector2.zero;
                 SpawnBall.sharedInstance.ballRigid.AddForce(Vector2.left * SpawnBall.sharedInstance.force, ForceMode2D.Impulse);
-            }*/
+            }
 
             if(scorePlayer1 >= 7)
             {
